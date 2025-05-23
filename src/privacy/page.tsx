@@ -1,9 +1,10 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 export default function Privacy() {
     return (
         <>
+        <HelmetProvider>
             <Navbar />
             <Helmet>
             <meta charSet="utf-8" />
@@ -12,7 +13,7 @@ export default function Privacy() {
       name="description"
       content={`ticketnest is very serious about your privacy. View our privacy policy here.`}
     />
-        </Helmet>
+           </Helmet>
 
             <div className="container mx-auto my-10 p-6 bg-base-100 font-1 rounded-lg">
                 <h1 className="text-4xl font-bold text-left mb-8">Privacy Policy</h1>
@@ -105,6 +106,8 @@ export default function Privacy() {
             </div>
 
             <Footer />
+            </HelmetProvider>
+         
         </>
     );
 }

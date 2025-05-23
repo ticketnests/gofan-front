@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import "./index.css"
+
 import {BrowserRouter, Routes,Route} from "react-router-dom"
 import Index from "./page"
 import School from "./school/page"

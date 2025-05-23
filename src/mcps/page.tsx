@@ -1,14 +1,14 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 export default function Mcps() {
   const [tickets, setTickets] = useState(0);
 
   return (
-    
+    <HelmetProvider>
     <section data-theme="retro" className="overflow-y-auto h-fit">
-        <Helmet>
+         <Helmet>
             <meta charSet="utf-8" />
             <title>Our Mission • ticketnest</title>
             <meta
@@ -16,6 +16,7 @@ export default function Mcps() {
       content={`At ticketnest, we understand the ticketing alternatives. Click here to read about how we plan to change the game.`}
     />
         </Helmet>
+       
       <Navbar />
 
       <div className="hero min-h-[80vh] font-1">
@@ -229,5 +230,7 @@ export default function Mcps() {
       </div>
       <Footer />
     </section>
+    </HelmetProvider>
+
   );
 }

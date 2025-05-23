@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { callApi, formatString } from "../functions/functions.ts";
 import { Link } from "react-router-dom";
 import type { ResType, SearchResult } from "../types";
@@ -47,7 +47,7 @@ export default function Search() {
     if (query.length % 3 === 0 && query.length !== 0) {
         findMostRelevant()
     }
-  }, [query, findMostRelevant]);
+  }, [query]);
 
   useEffect(() => {
     

@@ -84,7 +84,7 @@ export default function ScanUser() {
     } else {
       // do nothing
     }
-  }, [scannedContent, currentEvent.id]);
+  }, [scannedContent]);
 
   return (
     <section>
@@ -122,13 +122,16 @@ export default function ScanUser() {
               <div className="mx-auto w-fit border mt-4 p-4 border-primary font-1 rounded-box border-dashed">
                 <div className="w-96 h-96 max-h-screen mx-auto max-w-screen">
                   <p className="text-sm">You are currently scanning</p>
+                  <div className="!rounded-box">
                   <Scanner
                     onScan={(result: any) => {
                       setScannedContent(result[0].rawValue);
                       console.log("this was called");
                     }}
-                    classNames={"rounded-box"}
+                    // classNames={"rounded-box"}
                   />
+                  </div>
+                 
                 </div>
                 {/* <div className="flex flex-row p-3 flex-wrap gap-4 items-center font-semibold">
   <div>

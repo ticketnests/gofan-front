@@ -204,7 +204,7 @@ export default function TicketDashboard() {
                       <button
                         onClick={() => {
                           setSearchedEvents((events) => {
-                            return events.filter((event, k) => k !== i);
+                            return events.filter((_, k) => k !== i);
                           });
                         }}
                         className="hover:text-error hover:cursor-pointer"
@@ -733,7 +733,7 @@ export default function TicketDashboard() {
                                 </div>
 
                                 <button
-                                  onClick={(e) => {
+                                  onClick={() => {
                                     setNewEvents((prevEvents) => {
                                       const prevList = prevEvents.options;
 

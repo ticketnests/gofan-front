@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 import { formatString } from "../functions/functions.ts";
 import type { ScannedPerson } from "../types.ts";
 

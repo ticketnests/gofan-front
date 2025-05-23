@@ -4,7 +4,7 @@ import callApi from "../functions/functions";
 import Navbar from "../components/Navbar";
 import Notif from "../components/Notif";
 import Footer from "../components/Footer";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { isPassword, isEmail } from "../functions/functions.js";
 import { InformationCircleIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
@@ -50,7 +50,7 @@ export default function Login() {
   const handleSubmit = () => {
     console.log("this was clicked");
     setLoading(true);
-    if (!isPassword(user.password) && !isEmail(user.email)) {
+    if (!isPassword(user.password) || !isEmail(user.email)) {
       setNotif({ type: "err", message: "Invalid Credentials" });
       setLoading(false);
     } else {
@@ -70,7 +70,11 @@ export default function Login() {
 
   return (
     <>
-    <Helmet>
+  
+    <HelmetProvider>
+
+
+ <Helmet>
             <meta charSet="utf-8" />
       
               <title>Sign in • ticketnest</title>
@@ -79,10 +83,11 @@ export default function Login() {
       content={`Sign into your ticketnest account to view your tickets and events. `}
     />
             
-            
-            
-        </Helmet>
-      <section className="h-screen">
+            </Helmet>
+
+
+
+    <section className="h-screen">
         <Navbar />
 
         {notif.message !== "" && (
@@ -151,11 +156,11 @@ export default function Login() {
                   type="checkbox"
                   checked={user.isAdmin}
                   onChange={(e) => {
-                    setUser((user) => {
-                      user["isAdmin"] = e.target.checked;
-                      user["isSecurity"] = !e.target.checked;
-                      return user;
-                    });
+                    setUser((prevUser) => ({
+                      ...prevUser,
+                      isAdmin: Boolean(e.target.checked),
+                      isSecurity: Boolean(!e.target.checked),
+                    }));
                   }}
                   className="checkbox"
                 />
@@ -201,6 +206,15 @@ export default function Login() {
       </section>
 
       <Footer />
+
+    </HelmetProvider>
+    
+   
+            
+        
+     
+
+     
     </>
   );
 }

@@ -1,9 +1,11 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 export default function Terms() {
     return (
-        <>
+        <> 
+            <HelmetProvider>
+        
             <Navbar />
             <Helmet>
             <meta charSet="utf-8" />
@@ -102,6 +104,8 @@ export default function Terms() {
                 </div>
             </div>
             <Footer />
+            </HelmetProvider>
+           
         </>
     );
 }

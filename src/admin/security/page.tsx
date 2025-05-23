@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import callApi, { formatString } from "../../functions/functions";
 import Loading from "../../components/Loading";
 import Notif from "../../components/Notif";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import QRCodeWithEffect from "./QRcode";
 import callApi from "../functions/functions";
 
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function ShowTicket(props: Props) {
-  const modalBox = useRef< Ref<HTMLDialogElement> | undefined>(undefined);
+  const modalBox = useRef<HTMLDialogElement>(null);
   const [qrCode, setQrCode] = useState(
     "https://docs.lightburnsoftware.com/legacy/img/QRCode/ExampleCode.png"
   );
@@ -42,7 +42,7 @@ export default function ShowTicket(props: Props) {
         modalBox.current?.removeEventListener("close", handleClose);
       };
     }
-  }, [props.ticketId, handleClose]);
+  }, [props.ticketId]);
 
   return (
     <>

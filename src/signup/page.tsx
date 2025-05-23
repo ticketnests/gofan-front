@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { callApi, isEmail, isPassword, isString } from "../functions/functions";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import Notif from "../components/Notif";
 import { Link } from "react-router-dom";
 import type {Timeout, NewUser, NotifType, ResType} from "../types"
@@ -80,16 +80,18 @@ export default function Signup() {
 
   return (
     <>
+  <HelmetProvider>
 
-<Helmet>
+    <Helmet>
             <meta charSet="utf-8" />
             <title>Make an account • ticketnest</title>
             <meta
       name="description"
       content={`Make ticketing easy by creating your account today!`}
     />
-        </Helmet>
-      <section className="h-screen">
+      </Helmet>
+        
+        <section className="h-screen">
         <Navbar />
         {notif.message !== "" && (
           <Notif type={notif.type} message={notif.message} />
@@ -217,6 +219,10 @@ export default function Signup() {
       </section>
 
       <Footer />
+    
+  </HelmetProvider>
+
+    
     </>
   );
 }

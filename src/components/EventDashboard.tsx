@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import callApi from "../functions/functions";
 import Notif from "./Notif";
 import type { Event, NotifType, DashboardTicket, ResType } from "../types"
@@ -91,7 +91,7 @@ export default function EventDashboard(props: any) {
 
   const handleDownload = async () => {
     try {
-      const endpoint = import.meta.env.VITE_BACKEND_URL || "https://api.ticketnest.us";
+      const endpoint = window.location.href.includes("localhost") ? "http://localhost:8080" :"https://api.ticketnest.us";
       
       const response = await fetch(endpoint + "/exportData", {
         method: "POST",
@@ -100,7 +100,7 @@ export default function EventDashboard(props: any) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ exportId: eventDetails.id }),
+        body: JSON.stringify({ exportId: eventDetails ? eventDetails.id : "asdf" }),
       });
 
       if (!response.ok) {

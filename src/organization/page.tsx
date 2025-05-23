@@ -4,7 +4,7 @@ import { formatString, callApi } from "../functions/functions";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import { FolderOpenIcon } from "@heroicons/react/24/outline";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 
@@ -50,7 +50,10 @@ export default function Organization() {
   }, [id]);
 
   return (
-    <>
+    <>  
+    <HelmetProvider>
+
+
       <Navbar />
       <Helmet>
             <meta charSet="utf-8" />
@@ -59,8 +62,8 @@ export default function Organization() {
       name="description"
       content={`${formatString(schoolData.name ? schoolData?.name : "")}'s clubs and athletic ticketing here. CLick to view events and purchase tickets!`}
     />
-        </Helmet>
-
+       
+       </Helmet>
       {/* Mobile-responsive container with improved padding */}
       <div className="min-h-[80vh] mb-10 w-full px-4 md:px-6 lg:w-5/6 xl:w-4/6 mx-auto font-1 relative flex flex-col gap-4 items-center">
         {/* School name header */}
@@ -113,6 +116,8 @@ export default function Organization() {
       </div>
 
       <Footer />
+      </HelmetProvider>
+  
     </>
   );
 }

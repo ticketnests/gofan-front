@@ -60,7 +60,7 @@ export default function School() {
         window.location.replace("/");
       }
     });
-  }, [prevUrl, schoolId]);
+  }, [prevUrl]);
 
   return (
     <>

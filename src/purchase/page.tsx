@@ -42,7 +42,7 @@ export default function Purchase() {
       });
       setTotal(newTotal.toFixed(2));
     }
-  }, [cartIsOpen, apiData]);
+  }, [cartIsOpen]);
 
   const loggedIn = useContext(LoggedInContext);
   const [isAdmin, setIsAdmin] = useState(
@@ -70,7 +70,7 @@ export default function Purchase() {
     }
    
     x();
-  }, [gameId, schoolId]);
+  }, [gameId]);
 
   const [notif, setNotif] = useState({
     type: "err",

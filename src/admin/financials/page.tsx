@@ -37,7 +37,7 @@ import {
   BellAlertIcon
 } from "@heroicons/react/24/outline";
 
-import type { DataMetrics, ResType } from "../types.ts";
+import type { DataMetrics, ResType } from "../../types.ts";
 
 export default function Financials() {
   // const [user, setUser] = useState(null);
@@ -82,7 +82,7 @@ export default function Financials() {
     });
 
     // Initial fetch of graph data
-    // fetchGraphData(timeInterval);
+    fetchGraphData(timeInterval);
   }, []);
 
   // Fetch graph data whenever timeInterval changes
@@ -138,7 +138,7 @@ export default function Financials() {
         data: graphData.data,
         borderColor: "#1f77b4",
         backgroundColor: "rgba(31, 119, 180, 0.2)",
-        fill: true,
+        // fill: true,
         tension: 0.4,
       },
     ],
@@ -149,7 +149,7 @@ export default function Financials() {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        position: "bottom",
+        position: "bottom" as const,
       },
       tooltip: {
         callbacks: {
@@ -162,7 +162,7 @@ export default function Financials() {
     scales: {
       y: {
         beginAtZero: true,
-        position: "right",
+        position: "right" as const,
         title: {
           display: true,
           text: "Amount ($)",
