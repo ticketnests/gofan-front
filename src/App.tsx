@@ -37,6 +37,8 @@ function App() {
   useEffect(() => {
     // console.log("useEffect was called")
     // const userStored = sessionStorage.getItem("user");
+    const userStored = useSession();
+    setUser(userStored);
     callApi("/getUser", "GET", null).then((res) => {
       console.log("this was called", res);
       // console.log("current user value", "asdf")
@@ -76,9 +78,16 @@ function App() {
 
 
                {isLoggedIn ? <>
-                <Route path="/admin/scanUser" element={<ScanUser />} />
-                <Route path="/admin/financials" element={<Financials />} />
-                <Route path="/admin/security" element={<Security />} />
+
+               {((user&& Object.keys(user).includes('isAdmin') ) ? user.isAdmin : false) && (
+                <>
+                    <Route path="/admin/scanUser" element={<ScanUser />} />
+                 <Route path="/admin/financials" element={<Financials />} />
+                 <Route path="/admin/security" element={<Security />} />
+                </>
+             
+               )}
+               
                    <Route path="/settings" element={<Settings />} />
                    <Route path="/dashboard" element={<Dashboard />} />
                    <Route path="/admin/adminDashboard" element={<AdminDash />} /> 

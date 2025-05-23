@@ -200,7 +200,7 @@ export default function EventDashboard(props: any) {
                 type="checkbox"
                 className="toggle toggle-primary"
                 checked={eventDetails?.isActive}
-                onClick={(e) => {
+                onClick={() => {
                   setEventDetails((prev) =>
                     prev ? { ...prev, isActive: !prev.isActive } : prev
                   );

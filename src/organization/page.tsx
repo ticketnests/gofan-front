@@ -47,7 +47,7 @@ export default function Organization() {
 
       setLoading(false);
     });
-  }, []);
+  }, [id]);
 
   return (
     <>

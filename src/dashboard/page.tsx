@@ -13,12 +13,13 @@ export default function Dashboard() {
   const [loading, setLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
   useEffect(() => {
-    setLoading(true);
+    function x() {
+      setLoading(true);
 
     // console.log("this occured");
     callApi("/getTickets", "GET", undefined).then((req) => {
       if (req.code == "ok") {
-        let totalUser = useSession();
+        const totalUser = useSession();
         console.log(JSON.parse(req.message).tickets);
         setUser({ ...totalUser, tickets: JSON.parse(req.message).tickets });
         setLoading(false);
@@ -29,6 +30,11 @@ export default function Dashboard() {
         console.log("Something went wrong in gettickets request   [else]");
       }
     });
+
+    }
+
+    x();
+    
   }, []);
 
  
@@ -80,7 +86,7 @@ export default function Dashboard() {
                         ticket.isActive && (
                           <div
                             key={i}
-                            onClick={(e) => {
+                            onClick={() => {
                               openTicket(i);
                             }}
                             className="sm:grid flex flex-col gap-2 cursor-pointer w-full select-none grid-cols-8 p-2 border sm:min-w-96 min-h-52 rounded-box border-dashed"

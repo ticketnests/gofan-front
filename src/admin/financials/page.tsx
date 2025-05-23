@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import Navbar from "../../components/Navbar.tsx";
 import AdminNav from "../../components/AdminNav.tsx";
@@ -13,7 +13,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { convertTime, callApi } from "../../functions/functions.ts"
 
 
@@ -82,7 +82,7 @@ export default function Financials() {
     });
 
     // Initial fetch of graph data
-    fetchGraphData(timeInterval);
+    // fetchGraphData(timeInterval);
   }, []);
 
   // Fetch graph data whenever timeInterval changes
@@ -110,8 +110,8 @@ export default function Financials() {
 
         
 
-        const labels = dataArray.map((item: any) => item.date).reverse();
-        const amounts = dataArray.map((item: any) => item.amount).reverse();
+        const labels: any = dataArray.map((item: any) => item.date).reverse();
+        const amounts: any = dataArray.map((item: any) => item.amount).reverse();
 
         setGraphData({
           labels: labels,

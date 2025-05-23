@@ -10,30 +10,36 @@ import useSession from "../functions/auth"
 let timeout: Timeout;
 export default function Settings() {
     const [user, setUser] = useState<User | null>(null)
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const [connectLink, setConnectLink] = useState(null);
     useEffect(() => {
-        const savedUser = useSession()
-        setUser(savedUser)
 
-        if (savedUser === null) {
-            window.location.replace("/login")
-        } else {
-            if (savedUser.isAdmin) {
-                
-                callApi("/createConnectLink", "GET", null).then((res) => {
-                    if (res.code === "ok") {
-                        setConnectLink(JSON.parse(res.message).url)
-                    } else {
-                        setConnectLink(null)
-                    }
-        
-        
-                })
-
-
+        function x() {
+            const savedUser = useSession()
+            setUser(savedUser)
+    
+            if (savedUser === null) {
+                window.location.replace("/login")
+            } else {
+                if (savedUser.isAdmin) {
+                    
+                    callApi("/createConnectLink", "GET", null).then((res) => {
+                        if (res.code === "ok") {
+                            setConnectLink(JSON.parse(res.message).url)
+                        } else {
+                            setConnectLink(null)
+                        }
+            
+            
+                    })
+    
+    
+                }
             }
         }
+
+        x()
+        
        
 
         
@@ -60,7 +66,7 @@ export default function Settings() {
 
     const deleteUser = () => {
 
-        setLoading(true);
+        // setLoading(true);
 
 
         callApi("/deleteAccount", "GET", null).then((res) => {
@@ -100,8 +106,6 @@ export default function Settings() {
 
             } else if (res.code === "err") {
                 console.log(res);
-                
-            } else {
                 
             }
             window.location.replace("/");

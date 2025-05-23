@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { callApi, formatString } from "../functions/functions";
-import {Helmet} from "react-helmet";
+// import {Helmet} from "react-helmet";
 import { Link } from "react-router-dom";
 
 import type {School} from "../types"
@@ -60,7 +60,7 @@ export default function School() {
         window.location.replace("/");
       }
     });
-  }, []);
+  }, [prevUrl, schoolId]);
 
   return (
     <>

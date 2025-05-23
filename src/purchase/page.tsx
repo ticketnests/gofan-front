@@ -37,12 +37,12 @@ export default function Purchase() {
   useEffect(() => {
     let newTotal: number = 0;
     if (apiData != undefined) {
-      apiData.options.forEach((price, i) => {
+      apiData.options.forEach((price) => {
         newTotal += Number(Number(price.price) * Number(price.amountOfTickets));
       });
       setTotal(newTotal.toFixed(2));
     }
-  }, [cartIsOpen]);
+  }, [cartIsOpen, apiData]);
 
   const loggedIn = useContext(LoggedInContext);
   const [isAdmin, setIsAdmin] = useState(
@@ -50,23 +50,27 @@ export default function Purchase() {
   );
 
   useEffect(() => {
-    const user = useSession();
-    if (user !== null) {
-      setIsAdmin(user?.isAdmin);
-    }
-
-    callApi("/getGame", "POST", {
-      schoolId: schoolId,
-      gameId: gameId,
-    }).then((res) => {
-      if (res.code === "ok") {
-        setApiData(JSON.parse(res.message));
-        console.log(res.message);
-      } else {
-        window.location.replace("/");
+    function x() {
+      const user = useSession();
+      if (user !== null) {
+        setIsAdmin(user?.isAdmin);
       }
-    });
-  }, []);
+  
+      callApi("/getGame", "POST", {
+        schoolId: schoolId,
+        gameId: gameId,
+      }).then((res) => {
+        if (res.code === "ok") {
+          setApiData(JSON.parse(res.message));
+          console.log(res.message);
+        } else {
+          window.location.replace("/");
+        }
+      });
+    }
+   
+    x();
+  }, [gameId, schoolId]);
 
   const [notif, setNotif] = useState({
     type: "err",

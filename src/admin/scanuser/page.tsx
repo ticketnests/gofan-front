@@ -84,7 +84,7 @@ export default function ScanUser() {
     } else {
       // do nothing
     }
-  }, [scannedContent]);
+  }, [scannedContent, currentEvent.id]);
 
   return (
     <section>

@@ -61,7 +61,7 @@ export default function Security() {
     const manageAction = (person: actionParams) => {
         const url = person.hasCompleted ? "/deleteSecurity" : "/sendSecurity";
         setLoading(true);
-        let body = person.hasCompleted
+        const body = person.hasCompleted
             ? { uuid: person.uuid }
             : { email: person.email };
 

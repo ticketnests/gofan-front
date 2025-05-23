@@ -42,7 +42,7 @@ export default function ShowTicket(props: Props) {
         modalBox.current?.removeEventListener("close", handleClose);
       };
     }
-  }, [props.ticketId]);
+  }, [props.ticketId, handleClose]);
 
   return (
     <>

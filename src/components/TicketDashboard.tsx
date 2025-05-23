@@ -81,7 +81,7 @@ export default function TicketDashboard() {
 
   const createEvent = () => {
     console.log("this was clicked");
-    const validOptions: string[] = ["theater", "athletic", "other"];
+    // const validOptions: string[] = ["theater", "athletic", "other"];
 
     if (
       Date.now() > newEvents.startDate &&
@@ -161,10 +161,10 @@ export default function TicketDashboard() {
     });
   }, []);
 
-  function timeToMilliseconds(timeStr: string) {
-    const [hours, minutes] = timeStr.split(":").map(Number);
-    return (hours * 60 + minutes) * 60 * 1000;
-  }
+  // function timeToMilliseconds(timeStr: string) {
+  //   const [hours, minutes] = timeStr.split(":").map(Number);
+  //   return (hours * 60 + minutes) * 60 * 1000;
+  // }
 
   return (
     <>
@@ -331,7 +331,7 @@ export default function TicketDashboard() {
                                   <div className="w-fit mx-auto mt-3">
                                     <button
                                       className="btn btn-secondary btn-outline mt-4 mx-auto"
-                                      onClick={(e) =>
+                                      onClick={() =>
                                         setQuickNav("createEvent")
                                       }
                                     >
@@ -694,7 +694,7 @@ export default function TicketDashboard() {
 
                       <button
                         className="btn btn-primary mt-4 sm:mt-0"
-                        onClick={(e) => {
+                        onClick={() => {
                           if (
                             currentTicket.price > 0 &&
                             isString(currentTicket.name, 100)
@@ -837,7 +837,7 @@ export default function TicketDashboard() {
                           <input
                             type="checkbox"
                             checked={newEvents.isActive}
-                            onClick={(e) => {
+                            onClick={() => {
                               setNewEvents((prevEvents) => ({
                                 ...prevEvents,
                                 isActive: !prevEvents.isActive,

@@ -23,7 +23,7 @@ export default function Search() {
   const [query, setQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [searchResults, setSearchResults] = useState<SearchResult[] | []>([]);
-  const [isAdmin, setIsAdmin] = useState(useSession()!==null ? useSession().isAdmin : false);
+  const [isAdmin, setIsAdmin] = useState(() => {return useSession()!==null ? useSession().isAdmin : false});
   const findMostRelevant = () => {
     if (query && query.length > 0) {
       setLoading(true);
@@ -47,7 +47,7 @@ export default function Search() {
     if (query.length % 3 === 0 && query.length !== 0) {
         findMostRelevant()
     }
-  }, [query]);
+  }, [query, findMostRelevant]);
 
   useEffect(() => {
     
@@ -55,8 +55,6 @@ export default function Search() {
 
     if (userStored!==null) {
       setIsAdmin(JSON.parse(userStored).isAdmin);
-    } else {
-
     }
 
 

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react";
+import {useState, useEffect, useContext} from "react";
 import LoggedInContext from "../functions/contexts.ts"
 import { Link } from "react-router-dom";
 import type {User} from "../types"
@@ -9,20 +9,26 @@ export default function Navbar() {
     const [user, setUser] = useState<User | null>(null);
     const isLogged = useContext<boolean>(LoggedInContext);
     useEffect(() => {
-        
-        const currentUser = useSession() as User | null;
 
-        if (currentUser!==null) {
-            
-            setUser(currentUser);
-        } 
-        
-  
-  
-  
-        if (window.location.href.indexOf("/adminDashboard")!==-1 && (!currentUser?.isAdmin) && (currentUser?.isSecurity)) {
-          window.location.replace("/scanUser")
+        function x() {
+          const currentUser = useSession() as User | null;
+
+          if (currentUser!==null) {
+              
+              setUser(currentUser);
+          } 
+          
+    
+    
+    
+          if (window.location.href.indexOf("/adminDashboard")!==-1 && (!currentUser?.isAdmin) && (currentUser?.isSecurity)) {
+            window.location.replace("/scanUser")
+          }
         }
+        
+
+        x();
+       
     
      
 
