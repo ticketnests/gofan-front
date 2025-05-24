@@ -7,7 +7,7 @@ import type { SearchResult, ResType, NotifType, Timeout } from "../types"
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom"
 import Notif from "../components/Notif"
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // email, name, schoolParent, schoolAddress, password, categoryId
 interface AdminUser {
     email: string;
