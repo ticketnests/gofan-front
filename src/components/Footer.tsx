@@ -41,7 +41,7 @@ export default function Footer() {
   </nav>
   <nav>
     <h6 className="footer-title">Socials</h6>
-    <a className="link link-hover">Contact</a>
+    <a className="link link-hover" href="mailto:contact@ticketnest.us">Contact</a>
     <a className="link link-hover">Instagram</a>
     <a className="link link-hover">X.com</a>
   </nav>

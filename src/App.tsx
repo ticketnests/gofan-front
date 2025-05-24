@@ -22,6 +22,8 @@ import Organization from './organization/page'
 import useSession from "./functions/auth"
 import type {User} from "./types"
 import Security from './admin/security/page';
+import LandingPage from "./landing/page";
+import AdminRegister from './adminregister/page';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState<User>(useSession())
@@ -59,7 +61,7 @@ function App() {
         <LoggedInContext.Provider value={isLoggedIn}>
           <Routes>
        
-    
+                <Route path="/adminRegister" element={<AdminRegister />} />
                
                 <Route path="/" element={<Index />} />
                 <Route path="/school/:schoolId" element={<School />} />
@@ -75,22 +77,34 @@ function App() {
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
 
-
+                <Route path="/landing" element={<LandingPage />} />
 
                {isLoggedIn ? <>
 
+               {((user&& Object.keys(user).includes('isAdmin') ) ? user.isAdmin||user.isSecurity : false) && (
+                <>
+                  <Route path="/admin/scanUser" element={<ScanUser />} />
+                </>
+               )}
+
                {((user&& Object.keys(user).includes('isAdmin') ) ? user.isAdmin : false) && (
                 <>
-                    <Route path="/admin/scanUser" element={<ScanUser />} />
+                    {/* <Route path="/admin/scanUser" element={<ScanUser />} /> */}
                  <Route path="/admin/financials" element={<Financials />} />
                  <Route path="/admin/security" element={<Security />} />
+                 <Route path="/admin/adminDashboard" element={<AdminDash />} /> 
                 </>
              
                )}
-               
+
                    <Route path="/settings" element={<Settings />} />
-                   <Route path="/dashboard" element={<Dashboard />} />
-                   <Route path="/admin/adminDashboard" element={<AdminDash />} /> 
+
+                   {(user&&!(user.isAdmin||user.isSecurity)) && (
+
+<Route path="/dashboard" element={<Dashboard />} />
+                   )}
+                   
+                
                    <Route path="/*" element={<NotFound />} />
                </> : <>
 

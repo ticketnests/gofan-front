@@ -15,9 +15,9 @@ import {
   MagnifyingGlassIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import useSession from "../functions/auth";
 
-
-import type {Timeout, CreateEvent, Event} from "../types"
+import type {Timeout, CreateEvent, Event, User} from "../types"
 
 let timeout: Timeout;
 export default function TicketDashboard() {
@@ -45,7 +45,7 @@ export default function TicketDashboard() {
   // const [craftedEvent, setCraftedEvent] = useState({
   //   type: "Ticket",
   // })
-
+  const [user, setUser] = useState<User | null>(null)
   const [currentTicket, setCurrentTicket] = useState({
     price: 0,
     name: "",
@@ -139,7 +139,14 @@ export default function TicketDashboard() {
   useEffect(() => {
     // const sessionStorageUser = sessionStorage.getItem("user");
     setLoading(true);
-
+    const userStored = useSession();
+    if (userStored !== null) {
+      setUser(userStored);
+    } else {
+      setUser(null);
+      
+    }
+    
     // if (sessionStorageUser) {
     // //   setUser(JSON.parse(sessionStorageUser));
     // //   setTotalOpponents([
@@ -230,13 +237,24 @@ export default function TicketDashboard() {
             <div className="divider"></div>
 
             <div className="menu menu-vertical font-2 gap-2 w-full">
-              <button
+              {(user?.hasVerified) ? <>
+                <button
                 onClick={() => setQuickNav("createEvent")}
                 className="btn w-full"
               >
                 <CalendarDaysIcon className="size-4" />
                 Create a new event
               </button>
+              </> : <> <button
+             
+                className="btn w-full btn-disabled cursor-not-allowed"
+              >
+                <CalendarDaysIcon className="size-4" />
+                Create a new event
+              </button>
+              <p className="text-error font-bold">Finish creating account</p>
+              </>}
+             
             </div>
           </div>
         </div>
@@ -329,7 +347,8 @@ export default function TicketDashboard() {
                                   <CalendarDaysIcon className="size-12 mx-auto" />
                                   <p className="text-center">No Events</p>
                                   <div className="w-fit mx-auto mt-3">
-                                    <button
+                                    {(user?.hasVerified) ? <>
+                                      <button
                                       className="btn btn-secondary btn-outline mt-4 mx-auto"
                                       onClick={() =>
                                         setQuickNav("createEvent")
@@ -338,6 +357,13 @@ export default function TicketDashboard() {
                                       Create One
                                       <CalendarDaysIcon className="size-6" />
                                     </button>
+                                    </>: <>
+                                  
+                                      <p className="text-error">Not allowed</p>
+                                    
+                                    
+                                    </>}
+                                   
                                   </div>
                                 </div>
                               </div>

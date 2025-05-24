@@ -88,7 +88,14 @@ export default function School() {
                 <p className="text-xl font-bold sm:text-left text-center">
                   {formatString(school.name)} Events
                 </p>
-                <p className="sm:text-left text-center">{formatString(school.address)}</p>
+                {(school.address!=='N/A') && (
+ <p className="sm:text-left text-center">
+                  
+ {formatString(school.address)}
+ 
+ </p>
+                )}
+               
               </div>
             </div>
           )}

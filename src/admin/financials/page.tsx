@@ -192,7 +192,7 @@ export default function Financials() {
             
           <div className="w-5/6 mx-auto mt-4">
           {/* bar at the top */}
-          {(!loading&&dataMetrics?.totalRevenue&&dataMetrics?.ticketsSold&&dataMetrics?.amountAvailable&&dataMetrics) ? (
+          {(!loading&&typeof dataMetrics?.totalRevenue === "number" &&typeof dataMetrics?.ticketsSold === "number"&&typeof dataMetrics?.amountAvailable === "number"&&dataMetrics) ? (
             <>
               <div className="flex flex-row gap-4">
                 <div className="border font-1 rounded-box p-8 w-96 flex flex-row items-center justify-between">

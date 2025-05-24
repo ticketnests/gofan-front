@@ -8,6 +8,7 @@ import LoggedInContext from "../functions/contexts";
 import { ArrowLeftIcon, ExclamationTriangleIcon, InformationCircleIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import useSession from "../functions/auth"
+import  {formatString} from "../functions/functions"
 import type { Timeout, PriceOption, ClientEvent } from "../types"
 
 let timeout: Timeout;
@@ -481,7 +482,14 @@ export default function Purchase() {
                     <div className="p-3 bg-base-300 rounded-sm mt-2 mb-2">
                       <p className="font-bold text-lg">{apiData.school}</p>
 
-                      <p className="mt-2 text-sm">{apiData.address}</p>
+                      {(apiData.address.toLowerCase()!=='n/a') && (
+    <p className="mt-2 text-sm">
+                  
+ {formatString(apiData.address)}
+ 
+ </p>
+                )}
+                      {/* <p className="mt-2 text-sm">{apiData.address}</p> */}
 
                       <div className="bg-base-100 flex flex-col p-2 rounded-box mt-4">
                         <p className="font-bold font-1 mb-3">

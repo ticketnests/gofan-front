@@ -23,12 +23,13 @@ export default function Search() {
   const [query, setQuery] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [searchResults, setSearchResults] = useState<SearchResult[] | []>([]);
+  const [searchPersonalOnly, setSearchPersonalOnly] = useState<boolean>(false);
   const [isAdmin, setIsAdmin] = useState(() => {return useSession()!==null ? useSession().isAdmin : false});
   const findMostRelevant = () => {
     if (query && query.length > 0) {
       setLoading(true);
 
-      callApi("/schoolSearch", "POST", { query: query.toLowerCase() }).then(
+      callApi("/schoolSearch", "POST", { query: query.toLowerCase(), schoolOnly: !searchPersonalOnly }).then(
         (res: ResType) => {
           if (res.code === "err") {
             setSearchResults([]);
@@ -40,6 +41,9 @@ export default function Search() {
           setLoading(false);
         }
       );
+
+
+     
     }
   };
 
@@ -114,7 +118,8 @@ export default function Search() {
                   searchResults.map((result, i) => (
                     <Link
                       to={
-                        window.location.href + "organization" + "/" + result.categoryId + "/" + formatString(result.schoolName)
+                        !searchPersonalOnly ? window.location.href + "organization" + "/" + result.categoryId + "/" + formatString(result.schoolName) : window.location.href + "school/" +result.categoryId
+                        
                       }
                       key={i}
                       className="flex items-center gap-4 p-3 hover:bg-base-300 transition-all rounded-box cursor-pointer"
@@ -145,12 +150,16 @@ export default function Search() {
                 ) : (
                   <div className="text-center py-2">
                     <p className="font-1 font-semibold text-base-content">
-                      No School found
+                      No {searchPersonalOnly ?  "Account": "School" } found
                     </p>
                   </div>
                 )}
               </div>
             </div>
+            <div className="flex flex-row items-center gap-2 mt-1">
+            <p className="font-1">Non School Event Search</p>
+            <input type="checkbox" checked={searchPersonalOnly} onChange={() => setSearchPersonalOnly((prev) => !prev)} className="checkbox" />
+          </div>
           </div>
           {(isAdmin) && (
                <div className="alert alert-error w-full max-w-xl font-1">
@@ -162,7 +171,8 @@ export default function Search() {
                  
                </div>
           )}
-
+         
+          
           <Link to="/mcps" className="font-2 font-semibold">What's wrong with GoFan? <u>Find out what.</u></Link>
        
         </div>

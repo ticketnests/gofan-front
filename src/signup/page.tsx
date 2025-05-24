@@ -206,14 +206,21 @@ export default function Signup() {
               </button>
             </div>
           </div>
-
-          <div className="divider"></div>
-
+          
           <div className="text-center font-2">
             <p>Already have an account?</p>
             <Link to="/login" className="link link-primary">
               Login instead
             </Link>
+          </div>
+
+          <div className="divider"></div>
+
+          <div className="text-center font-2">
+            <p>Want to <Link to="/adminregister" className="link link-primary">
+              sell your own tickets?
+            </Link></p>
+            
           </div>
         </div>
       </section>
