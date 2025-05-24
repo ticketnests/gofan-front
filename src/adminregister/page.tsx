@@ -24,7 +24,7 @@ interface AdminUser {
 }
 let timeout: Timeout;
 export default function AdminRegister() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     // const [isPartOfSchool, setIsPartOfSchool] = useState<boolean>(false);
     const [newUser, setNewUser] = useState<AdminUser>({
         isSchoolAccount: false,
@@ -297,11 +297,18 @@ export default function AdminRegister() {
                      
                         </>}     
                         
-                        
+                        {(loading) ? <>
+                            <button type="submit" className="btn btn-primary btn-disabled">
+                            <p>Create Account</p>
+
+                        </button>
+                        </> : <>
                         <button type="submit" onClick={handleSubmit} className="btn btn-primary">
                             <p>Create Account</p>
 
                         </button>
+                        </>}
+                 
 
                     </form>
                 
