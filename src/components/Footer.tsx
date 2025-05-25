@@ -30,13 +30,14 @@ export default function Footer() {
         <a className="font-semibold text-2xl">ticketnest</a>
       
       <br />
-      High School Ticketing Done Right
+      Event Ticketing Done Right
     </p>
   </aside>
   
   <nav>
-    <h6 className="footer-title">Our Mission</h6>
-    <Link to="/mcps" className="link link-hover">Mission</Link>
+    <h6 className="footer-title">Nav links</h6>
+    <Link to="/mcps" className="link link-hover">Our Mission</Link>
+    <Link to="/landing" className="link link-hover">Create your own events</Link>
 
   </nav>
   <nav>

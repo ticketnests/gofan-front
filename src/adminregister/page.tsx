@@ -126,7 +126,7 @@ export default function AdminRegister() {
     }
 
 
-
+    setLoading(true)
     callApi("/createschool", "POST", newUser).then((res: ResType) => {
         if (res.code==="err") {
             setNotif({type: "err", message: "Something went wrong"})
@@ -138,6 +138,7 @@ export default function AdminRegister() {
         } else {
             setNotif({type: "err", message: "Something went wrong"})
         }
+        setLoading(false);
     })
 
 
@@ -298,7 +299,7 @@ export default function AdminRegister() {
                         </>}     
                         
                         {(loading) ? <>
-                            <button type="submit" className="btn btn-primary btn-disabled">
+                            <button disabled type="submit" className="btn btn-primary btn-disabled">
                             <p>Create Account</p>
 
                         </button>
@@ -325,7 +326,7 @@ export default function AdminRegister() {
                 ticketnest
 
                 </Link>
-                <p className="text-xs mt-1">High School Ticketing Done Right</p>
+                <p className="text-xs mt-1">Event Ticketing Done Right</p>
                 <div>
                     <p className="font-1 font-bold text-5xl"></p>
                 </div>

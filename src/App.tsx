@@ -30,6 +30,8 @@ function App() {
   useEffect(() => {
     const x = useSession();
     if (x !== null && x !== undefined) {
+
+      setUser(user);
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
@@ -76,7 +78,7 @@ function App() {
                 <Route path='/mcps' element={<Mcps />} />
                 <Route path="/privacy" element={<Privacy />} />
                 <Route path="/terms" element={<Terms />} />
-
+                {/* <Route path="/robots.txt" element={<div> User-agent: * <br /> Disallow: / </div>} /> */}
                 <Route path="/landing" element={<LandingPage />} />
 
                {isLoggedIn ? <>

@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: 
+Disallow: /dashboard
+Disallow: /admin/dashboard
+Disallow: /admin/financials
+Disallow: /settings
+Disallow: /admin/security
+Disallow: /admin/scanuser
+Sitemap: https://api.ticketnest.us/sitemap

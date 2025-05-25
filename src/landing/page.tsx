@@ -1,6 +1,6 @@
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
-import { CheckCircleIcon } from "@heroicons/react/24/outline";
+import { CheckCircleIcon, TicketIcon, BanknotesIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 
 export default function LandingPage() {
@@ -191,7 +191,27 @@ export default function LandingPage() {
           </div>
           <p className="mt-2 text-center">Ticketnest is built for you. Dont believe us? Let's <a className="link" href="mailto:contact@ticketnest.us">talk</a></p>
         </div>
-      </div>       
+      </div>  
+
+      <div className="min-h-[50vh] bg-base-200 grid md:grid-cols-2 font-1  p-10 gap-5 items-center justify-items-center">
+        <div className="">
+
+          <p className="text-5xl font-1 font-bold max-w-md">Handle events without killing your revenue</p>
+      
+          <Link to="/adminregister" className="btn btn-primary mt-4 btn-outline">Make events now</Link>
+
+        </div>
+
+        <div className="md:flex hidden flex-row gap-2">
+            {Array(2).fill("").map((_,i) => (
+              <TicketIcon key={i} className="size-48" />
+            ))}
+            <BanknotesIcon className="size-48" />
+            
+
+        </div>
+        
+      </div>     
 
 
         <Footer />
