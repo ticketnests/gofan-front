@@ -158,14 +158,14 @@ export default function AdminRegister() {
         
 
         <section className="font-1 min-h-screen grid grid-row-reverse sm:grid-cols-2 gap-2 items-center justify-items-center  h-full w-full ">
-            <div className="order-last sm:w-2/6 w-full mx-auto">
+            <div className="order-last sm:w-2/6 w-full mx-auto min-w-96">
                 {notif.message !== "" && (
                       <Notif type={notif.type} message={notif.message} />
                     )}
                 <p className="font-bold font-1 text-2xl mb-4 text-center">Make tickets<br/>easy without the fees</p>
 
                 <p className="text-center mb-4 font-1 text-sm">No Credit Card Required</p>
-                <div className="w-full p-3 bg-base-300">
+                <div className="w-full p-3 bg-base-300 rounded-box">
            
                     
                     <form onSubmit={(e) => { e.preventDefault(); handleSubmit()}} className="flex flex-col w-full gap-2 mx-auto">
