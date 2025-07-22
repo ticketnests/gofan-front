@@ -31,12 +31,14 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("This is being called.", useSession())
     const userStored = useSession();
     setUser(userStored);
 
     callApi("/getUser", "GET", null).then((res) => {
       if (res.code === "ok") {
         sessionStorage.setItem("user", res.message);
+        setUser(JSON.parse(res.message))
         setIsLoggedIn(true);
       } else {
         sessionStorage.removeItem("user");
@@ -70,6 +72,8 @@ function App() {
           {/* Protected routes */}
           {isLoggedIn ? (
             <>
+              {console.log(`user stuff: ${user?.isAdmin} and ${user?.isSecurity} `)}
+              {console.log("user", user)}
               {(user?.isAdmin || user?.isSecurity) && (
                 <Route path="/admin/scanUser" element={<ScanUser />} />
               )}
