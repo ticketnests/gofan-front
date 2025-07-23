@@ -8,24 +8,24 @@
 ## 🚀 Key Features
 
 - **Flexible Ticket Sales**
-  - Support for free, donation-based, and paid tickets for high school events, fundraisers, games, concerts, and more :contentReference[oaicite:1]{index=1}.
+  - Support for free, donation-based, and paid tickets for high school events, fundraisers, games, concerts, and more.
   - Multiple ticket types (e.g. VIP, General, Group) with custom pricing, descriptions, metadata fields.
 
 - **Accounting & Cancellations**
   - Built-in revenue tracking and accounting tools.
-  - Manage refunds, holds, and cancellations easily :contentReference[oaicite:2]{index=2}.
+  - Manage refunds, holds, and cancellations easily.
 
 - **Scannable e‑Tickets & Check-In**
   - Automated QR code ticket generation and email delivery.
-  - Mobile-friendly ticket scanning—no additional hardware required :contentReference[oaicite:3]{index=3}.
+  - Mobile-friendly ticket scanning—no additional hardware required.
 
 - **Payments & On-Site Sales**
   - Online payments via major processors.
-  - On-site Tap‑to‑Pay and door sales through mobile devices :contentReference[oaicite:4]{index=4}.
+  - On-site Tap‑to‑Pay and door sales through mobile devices.
 
 - **Donations & Fundraising**
   - Sell tickets with built-in donation options for event-driven fundraisers.
-  - Keep 100% of the proceeds—no hidden platform fees :contentReference[oaicite:5]{index=5}.
+  - Keep 100% of the proceeds—no hidden platform fees.
 
 - **Event Management & Reporting**
   - Dashboard with real-time ticket sales, attendee lists, and scan analytics.
@@ -115,9 +115,3 @@ Reach out via GitHub Issues or contact support through Ticketnest.
 
 ---
 
-
-
-```
-
-
-```
