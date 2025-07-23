@@ -1,3 +1,4 @@
+````markdown
 # Ticketnest
 
 **Ticketnest** is a user-friendly ticketing platform tailored for schools, charities, and organizations seeking seamless event management—from ticket sales and accounting to on-site check-in and payment processing.
@@ -49,23 +50,74 @@
    ```bash
    git clone https://github.com/ticketnests/gofan-back.git
    git clone https://github.com/ticketnests/gofan-front.git
+````
+
+2. **Backend Setup**
+
+   ```bash
+   cd gofan-back
+   npm install
+   cp .env.example .env
+   # Configure database, payment API keys, etc.
+   npm run migrate
+   npm start
+   ```
+
+3. **Frontend Setup**
+
+   ```bash
+   cd gofan-front
+   npm install
+   cp .env.example .env
+   # Point REACT_APP_API_URL to your backend server
+   npm start
+   ```
+
+4. Visit `http://localhost:3000`, create an event, and start selling or scanning tickets instantly!
+
+---
+
+## 💡 How It Works
+
+| Step                         | Description                                                                |
+| ---------------------------- | -------------------------------------------------------------------------- |
+| 1️⃣ Create Event             | Admin defines ticket types, pricing, limits, and optional donation fields. |
+| 2️⃣ Share Link or QR Code    | Embed ticket form on your site or use a ticketnest.us link or QR code.     |
+| 3️⃣ Purchases & Tickets Sent | Buyers complete form → instant email with QR-coded tickets.                |
+| 4️⃣ Event Day Check-In       | Use your phone or tablet to scan tickets at doors.                         |
+| 5️⃣ Payout & Reporting       | View dashboard data or export. Receive payments weekly or on-demand.       |
+
+---
+
+## 🧩 Integrations / Plugins
+
+* Payment gateways: Stripe, PayPal, Apple/Google Pay (if supported)
+* Email services: Mailgun, SendGrid for ticket delivery
+* CRM/Accounting: CSV/API export for external tools
+
+---
+
+## 🧪 Contributing
+
+Contributions welcome! Please fork, develop in descriptive branches, and submit PRs with clear change descriptions and tests.
+
+---
+
+## 📄 License
+
+MIT License.
+
+---
+
+## 📞 Questions?
+
+Reach out via GitHub Issues or contact support through Ticketnest.
+
+---
 
 
-Backend Setup:
-```bash
-cd gofan-back
-npm install
-cp .env.example .env
-# Configure database, payment API keys, etc.
-npm run migrate
-npm start
+
 ```
 
-Frontend Setup:
-```bash
-cd gofan-front
-npm install
-cp .env.example .env
-# Point REACT_APP_API_URL to your backend server
-npm start
+
 ```
